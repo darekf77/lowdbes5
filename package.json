@@ -54,19 +54,13 @@
   ],
   "scripts": {
     "test": "node --import tsx/esm --test src/**/*.test.ts src/**/**/*.test.ts",
-    "lint": "eslint src --ext .ts --ignore-path .gitignore",
     "build": "del-cli lib && tsc",
-    "prepublishOnly": "npm run build",
-    "postversion": "git push --follow-tags && npm publish",
-    "prepare": "husky install"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "steno": "^4.0.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
-    "@commitlint/prompt-cli": "^18.4.3",
     "@sindresorhus/tsconfig": "^5.0.0",
     "@types/express": "^4.17.21",
     "@types/lodash": "^4.14.202",
@@ -75,7 +69,6 @@
     "del-cli": "^5.1.0",
     "eslint": "^8.56.0",
     "express-async-handler": "^1.2.0",
-    "husky": "^8.0.3",
     "lodash": "^4.17.21",
     "tempy": "^3.1.0",
     "ts-node": "^10.9.2",
