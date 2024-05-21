@@ -1,6 +1,6 @@
-import { LocalStorage } from '../adapters/browser/LocalStorage.js'
-import { SessionStorage } from '../adapters/browser/SessionStorage.js'
-import { LowSync } from '../index.js'
+import { LocalStorage } from '../adapters/browser/LocalStorage'
+import { SessionStorage } from '../adapters/browser/SessionStorage'
+import { LowSync } from '../index'
 
 export function LocalStoragePreset<Data>(
   key: string,

@@ -3,7 +3,7 @@ import test from 'node:test'
 
 import { temporaryFile } from 'tempy'
 
-import { JSONFile, JSONFileSync } from './JSONFile.js'
+import { JSONFile, JSONFileSync } from './JSONFile'
 
 type Data = {
   a: number

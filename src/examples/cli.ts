@@ -1,4 +1,4 @@
-import { JSONFileSyncPreset } from '../presets/node.js'
+import { JSONFileSyncPreset } from '../presets/node'
 
 type Data = {
   messages: string[]

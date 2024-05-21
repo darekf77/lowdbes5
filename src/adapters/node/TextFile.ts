@@ -4,22 +4,22 @@ import path from 'node:path'
 
 import { Writer } from 'steno'
 
-import { Adapter, SyncAdapter } from '../../core/Low.js'
+import { Adapter, SyncAdapter } from '../../core/Low'
 
 export class TextFile implements Adapter<string> {
-  #filename: PathLike
-  #writer: Writer
+  __filename: PathLike
+  __writer: Writer
 
   constructor(filename: PathLike) {
-    this.#filename = filename
-    this.#writer = new Writer(filename)
+    this.__filename = filename
+    this.__writer = new Writer(filename)
   }
 
   async read(): Promise<string | null> {
     let data
 
     try {
-      data = await readFile(this.#filename, 'utf-8')
+      data = await readFile(this.__filename, 'utf-8')
     } catch (e) {
       if ((e as NodeJS.ErrnoException).code === 'ENOENT') {
         return null
@@ -31,25 +31,25 @@ export class TextFile implements Adapter<string> {
   }
 
   write(str: string): Promise<void> {
-    return this.#writer.write(str)
+    return this.__writer.write(str)
   }
 }
 
 export class TextFileSync implements SyncAdapter<string> {
-  #tempFilename: PathLike
-  #filename: PathLike
+  __tempFilename: PathLike
+  __filename: PathLike
 
   constructor(filename: PathLike) {
-    this.#filename = filename
+    this.__filename = filename
     const f = filename.toString()
-    this.#tempFilename = path.join(path.dirname(f), `.${path.basename(f)}.tmp`)
+    this.__tempFilename = path.join(path.dirname(f), `.${path.basename(f)}.tmp`)
   }
 
   read(): string | null {
     let data
 
     try {
-      data = readFileSync(this.#filename, 'utf-8')
+      data = readFileSync(this.__filename, 'utf-8')
     } catch (e) {
       if ((e as NodeJS.ErrnoException).code === 'ENOENT') {
         return null
@@ -61,7 +61,7 @@ export class TextFileSync implements SyncAdapter<string> {
   }
 
   write(str: string): void {
-    writeFileSync(this.#tempFilename, str)
-    renameSync(this.#tempFilename, this.#filename)
+    writeFileSync(this.__tempFilename, str)
+    renameSync(this.__tempFilename, this.__filename)
   }
 }

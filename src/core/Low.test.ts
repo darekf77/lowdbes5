@@ -6,9 +6,9 @@ import test from 'node:test'
 import lodash from 'lodash'
 import { temporaryFile } from 'tempy'
 
-import { Memory } from '../adapters/Memory.js'
-import { JSONFile, JSONFileSync } from '../adapters/node/JSONFile.js'
-import { Low, LowSync } from './Low.js'
+import { Memory } from '../adapters/Memory'
+import { JSONFile, JSONFileSync } from '../adapters/node/JSONFile'
+import { Low, LowSync } from './Low'
 
 type Data = {
   a?: number

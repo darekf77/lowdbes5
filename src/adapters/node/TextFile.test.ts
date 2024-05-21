@@ -3,7 +3,7 @@ import test from 'node:test'
 
 import { temporaryFile } from 'tempy'
 
-import { TextFile, TextFileSync } from './TextFile.js'
+import { TextFile, TextFileSync } from './TextFile'
 
 await test('TextFile', async () => {
   const str = 'foo'

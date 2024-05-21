@@ -1,7 +1,7 @@
 import { deepEqual, equal } from 'node:assert/strict'
 import test from 'node:test'
 
-import { Memory, MemorySync } from './Memory.js'
+import { Memory, MemorySync } from './Memory'
 
 await test('Memory', async () => {
   const obj = { a: 1 }

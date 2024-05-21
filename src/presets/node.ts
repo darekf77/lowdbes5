@@ -1,8 +1,8 @@
 import { PathLike } from 'node:fs'
 
-import { Memory, MemorySync } from '../adapters/Memory.js'
-import { JSONFile, JSONFileSync } from '../adapters/node/JSONFile.js'
-import { Low, LowSync } from '../core/Low.js'
+import { Memory, MemorySync } from '../adapters/Memory'
+import { JSONFile, JSONFileSync } from '../adapters/node/JSONFile'
+import { Low, LowSync } from '../core/Low'
 
 export async function JSONFilePreset<Data>(
   filename: PathLike,

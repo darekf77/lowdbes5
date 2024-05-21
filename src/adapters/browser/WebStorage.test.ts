@@ -1,7 +1,7 @@
 import { deepEqual, equal } from 'node:assert/strict'
 import test from 'node:test'
 
-import { WebStorage } from './WebStorage.js'
+import { WebStorage } from './WebStorage'
 
 const storage: { [key: string]: string } = {}
 

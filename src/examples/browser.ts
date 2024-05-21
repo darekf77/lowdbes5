@@ -1,4 +1,4 @@
-import { LocalStoragePreset } from '../presets/browser.js'
+import { LocalStoragePreset } from '../presets/browser'
 
 type Data = {
   messages: string[]

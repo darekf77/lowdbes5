@@ -1,12 +1,12 @@
 import { PathLike } from 'fs'
 
-import { Adapter, SyncAdapter } from '../../core/Low.js'
-import { TextFile, TextFileSync } from './TextFile.js'
+import { Adapter, SyncAdapter } from '../../core/Low'
+import { TextFile, TextFileSync } from './TextFile'
 
 export class DataFile<T> implements Adapter<T> {
-  #adapter: TextFile
-  #parse: (str: string) => T
-  #stringify: (data: T) => string
+  __adapter: TextFile
+  __parse: (str: string) => T
+  __stringify: (data: T) => string
 
   constructor(
     filename: PathLike,
@@ -18,29 +18,29 @@ export class DataFile<T> implements Adapter<T> {
       stringify: (data: T) => string
     },
   ) {
-    this.#adapter = new TextFile(filename)
-    this.#parse = parse
-    this.#stringify = stringify
+    this.__adapter = new TextFile(filename)
+    this.__parse = parse
+    this.__stringify = stringify
   }
 
   async read(): Promise<T | null> {
-    const data = await this.#adapter.read()
+    const data = await this.__adapter.read()
     if (data === null) {
       return null
     } else {
-      return this.#parse(data)
+      return this.__parse(data)
     }
   }
 
   write(obj: T): Promise<void> {
-    return this.#adapter.write(this.#stringify(obj))
+    return this.__adapter.write(this.__stringify(obj))
   }
 }
 
 export class DataFileSync<T> implements SyncAdapter<T> {
-  #adapter: TextFileSync
-  #parse: (str: string) => T
-  #stringify: (data: T) => string
+  __adapter: TextFileSync
+  __parse: (str: string) => T
+  __stringify: (data: T) => string
 
   constructor(
     filename: PathLike,
@@ -52,21 +52,21 @@ export class DataFileSync<T> implements SyncAdapter<T> {
       stringify: (data: T) => string
     },
   ) {
-    this.#adapter = new TextFileSync(filename)
-    this.#parse = parse
-    this.#stringify = stringify
+    this.__adapter = new TextFileSync(filename)
+    this.__parse = parse
+    this.__stringify = stringify
   }
 
   read(): T | null {
-    const data = this.#adapter.read()
+    const data = this.__adapter.read()
     if (data === null) {
       return null
     } else {
-      return this.#parse(data)
+      return this.__parse(data)
     }
   }
 
   write(obj: T): void {
-    this.#adapter.write(this.#stringify(obj))
+    this.__adapter.write(this.__stringify(obj))
   }
 }

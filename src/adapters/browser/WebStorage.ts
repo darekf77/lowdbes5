@@ -1,16 +1,16 @@
-import { SyncAdapter } from '../../core/Low.js'
+import { SyncAdapter } from '../../core/Low'
 
 export class WebStorage<T> implements SyncAdapter<T> {
-  #key: string
-  #storage: Storage
+  __key: string
+  __storage: Storage
 
   constructor(key: string, storage: Storage) {
-    this.#key = key
-    this.#storage = storage
+    this.__key = key
+    this.__storage = storage
   }
 
   read(): T | null {
-    const value = this.#storage.getItem(this.#key)
+    const value = this.__storage.getItem(this.__key)
 
     if (value === null) {
       return null
@@ -20,6 +20,6 @@ export class WebStorage<T> implements SyncAdapter<T> {
   }
 
   write(obj: T): void {
-    this.#storage.setItem(this.#key, JSON.stringify(obj))
+    this.__storage.setItem(this.__key, JSON.stringify(obj))
   }
 }
